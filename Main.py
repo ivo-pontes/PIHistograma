@@ -6,7 +6,7 @@ from Histograma import Histograma
 if __name__ == '__main__':
 	print("Processamento de Imagens.")
 
-	histograma = Histograma("img/4x4.png")
+	histograma = Histograma("img/lena-gray.png")
 	histograma.carregarImagem()
 
 	histograma.executar()

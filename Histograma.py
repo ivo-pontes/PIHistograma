@@ -40,17 +40,11 @@ class Histograma:
 		
 		c = float('-inf') #Menor valor da imagem
 		d = float('inf') #Maior valor da imagem
-
-		'''
-		F(i,j) = G(F(i,j))
-		Se a = 0 e b = 255
-		G(F(i,j)) = (F(i,j)-c)*(255/(d-c)) 
-		'''
 		
 		'''
 		LUT - Look-up table
 		'''
-		l = 8
+		l = 30
 		
 		rk = np.zeros(l) #Quantidade de níveis de cinza
 		nk = np.zeros(l) #Quantidade de pixels de mesmo nível
@@ -92,14 +86,11 @@ class Histograma:
 		print(eq)
 		print(novo_rk)
 		
-		n, bins, patches = plt.hist(x=novo_rk, bins='auto', color='#0504aa', alpha=0.7, rwidth=0.85)
+		n, bins, patches = plt.hist(x=novo_rk, bins=50, color='#0504aa', alpha=0.7, rwidth=0.85)
 		
 		plt.grid(axis='y', alpha=0.75)
-		plt.xlabel('Value')
-		plt.ylabel('Frequency')
+		plt.xlabel('Nível de Cinza (rk)')
+		plt.ylabel('Probabilidade')
 		plt.title('My Very Own Histogram')
 		plt.text(23, 45, r'$\mu=15, b=3$')
-		maxfreq = n.max()
-		# Set a clean upper y-axis limit.
-		plt.ylim(ymax=np.ceil(maxfreq / 10) * 10 if maxfreq % 10 else maxfreq + 10)
-				
+		plt.show()
